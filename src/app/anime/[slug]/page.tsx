@@ -254,8 +254,8 @@ export default function AnimeDetail({ params }: PageProps) {
           "
         >
           <p className="text-3xl text-white italic leading-relaxed">
-            "The weak who survive become the strong.
-            Every battle makes me stronger."
+            The weak who survive become the strong.
+            Every battle makes me stronger.
           </p>
         </div>
       </div>
