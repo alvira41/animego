@@ -31,7 +31,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl leading-9 text-purple-100/80 max-w-2xl">
-            NimeGami menghadirkan sinopsis lengkap, karakter ikonik,
+            Animego menghadirkan sinopsis lengkap, karakter ikonik,
             galeri visual berkualitas tinggi, dan cuplikan adegan terbaik
             dari berbagai anime populer. Temukan petualangan baru,
             pertarungan epik, dan cerita yang tak terlupakan dalam satu

@@ -3,41 +3,42 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import { useEffect, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-const animes = [
-  {
-    slug: "demon-slayer",
-    title: "Demon Slayer",
-    image: "/anime1.jpg",
-    rating: "9.2",
-    genre: "Action • Fantasy",
-  },
-  {
-    slug: "attack-on-titan",
-    title: "Attack On Titan",
-    image: "/anime2.jpg",
-    rating: "9.5",
-    genre: "Action • Drama",
-  },
-  {
-    slug: "jujutsu-kaisen",
-    title: "Jujutsu Kaisen",
-    image: "/anime3.jpg",
-    rating: "9.1",
-    genre: "Supernatural",
-  },
-  {
-    slug: "solo-leveling",
-    title: "Solo Leveling",
-    image: "/solevp.jpg",
-    rating: "9.4",
-    genre: "Fantasy • Action",
-  },
-];
+interface Anime {
+  slug: string;
+  title: string;
+  image: string;
+  rating: string;
+  genre: string;
+}
 export default function Menu() {
+  const [animes, setAnimes] = useState<Anime[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/anime")
+      .then((res) => res.json())
+      .then((data) => {
+        setAnimes(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="menu" className="bg-[#05000B] py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 text-white text-center">
+          Loading...
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       id="menu"
@@ -75,8 +76,8 @@ export default function Menu() {
             },
           }}
         >
-          {animes.map((anime, index) => (
-            <SwiperSlide key={index}>
+          {animes.map((anime) => (
+            <SwiperSlide key={anime.slug}>
               <div className="group overflow-hidden rounded-[30px] border border-purple-500/20 bg-[#160129]/80 backdrop-blur-xl">
 
                 <div className="overflow-hidden">
