@@ -180,7 +180,7 @@ export default async function GenrePage({
               hover:bg-purple-900
             "
           >
-            ← Kembali ke Home
+            ← Kembali ke Homee
           </Link>
         </div>
       </div>
