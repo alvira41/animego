@@ -66,6 +66,7 @@ export default async function GenrePage({
     description: `Koleksi anime genre ${slug}.`,
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [rows]: any = await db.query(
     "SELECT slug, title, poster AS image, rating FROM anime WHERE FIND_IN_SET(?, REPLACE(LOWER(genre), ' ', ''))",
     [slug]

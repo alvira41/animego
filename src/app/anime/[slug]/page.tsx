@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { db } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: {
     slug: string;
@@ -10,6 +12,7 @@ interface PageProps {
 export default async function AnimeDetail({ params }: PageProps) {
 
   // 1. Ambil anime berdasarkan slug
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [animeRows]: any = await db.query(
     "SELECT * FROM anime WHERE slug = ?",
     [params.slug]
@@ -26,6 +29,7 @@ export default async function AnimeDetail({ params }: PageProps) {
   }
 
   // 2. Ambil gallery berdasarkan anime_id (langsung pakai id & image, tanpa di-map jadi string)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [galleryRows]: any = await db.query(
     "SELECT id, image FROM anime_galleries WHERE anime_id = ?",
     [anime.id]

@@ -45,6 +45,7 @@ function slugify(name: string): string {
 }
 
 export default async function GenreListing() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [rows]: any = await db.query("SELECT DISTINCT genre FROM anime WHERE genre IS NOT NULL AND genre != ''");
 
   const genreSet = new Set<string>();
